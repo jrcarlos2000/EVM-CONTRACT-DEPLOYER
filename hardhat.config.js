@@ -1,5 +1,5 @@
 require("dotenv").config();
-
+const ethers = require("ethers");
 require("@nomiclabs/hardhat-etherscan");
 require("@nomiclabs/hardhat-waffle");
 require("hardhat-gas-reporter");
@@ -10,7 +10,7 @@ require("hardhat-deploy-ethers");
 require("@openzeppelin/hardhat-upgrades");
 
 const mnemonic =
-  "replace this unaware super where filter stone fine garlic address matrix basic";
+  "replace hover unaware super where filter stone fine garlic address matrix basic";
 
 let privateKeys = [];
 
@@ -21,7 +21,7 @@ for (let i = 0; i <= 10; i++) {
 }
 
 task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
-  const accounts = await hre.ethers.getSigners();
+  const accounts = await ethers.getSigners();
 
   for (const account of accounts) {
     console.log(account.address);
