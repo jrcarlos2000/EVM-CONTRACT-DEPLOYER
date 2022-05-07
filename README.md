@@ -1,7 +1,7 @@
 This is a boilerplate for deploying a contract to any network, if some networks are missing please feel free to add them.
 if read carefully this is very easy to use and extremely useful can save tons of time.
 
-## FEEL FREE TO BRANCH AND SOME GOOD EXAMPLES 
+## FEEL FREE TO BRANCH AND ADD SOME GOOD EXAMPLES 
 ## CONTRIBUTIONS TO IMPROVE THIS REPO ARE HIGHLY APPRECIATED
 
 ### `SETTING UP`
