@@ -1,6 +1,7 @@
 
 const decimals = {};
 decimals.polygon= {};
+decimals.bsc = {};
 decimals.polygon.USDT = 6;
 decimals.polygon.BUSD = 18;
 decimals.polygon.USDC = 6;

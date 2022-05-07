@@ -20,5 +20,5 @@ const main = async ()=>{
 }
 
 main.id = "001_core";
-main.skip = () => !(isLocalHost || isFork);
+main.skip = () => !isLocalHost
 module.exports = main;

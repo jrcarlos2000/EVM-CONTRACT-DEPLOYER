@@ -11,8 +11,11 @@
     "verify": "npx hardhat verify",
     "node:polygon" : "./node.sh polygon",
     "node:mainnet" : "./node.sh mainnet",
+    "node:bsc" : "./node.sh bsc",
     "deploy:polygon" : "NETWORK=polygon npx hardhat deploy --network localhost",
-    "deploy:mainnet" : "NETWORK=mainnet npx hardhat deploy --network localhost"
+    "deploy:mainnet" : "NETWORK=mainnet npx hardhat deploy --network localhost",
+    "fund:bsc" : "npx hardhat --network localhost fund --fundnetwork bsc",
+    "fund:polygon" : "npx hardhat --network localhost fund --fundnetwork polygon"
   },
 
   "devDependencies": {
