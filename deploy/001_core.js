@@ -2,7 +2,7 @@ require("hardhat");
 const { utils } = require("ethers");
 const { deployments, ethers, getNamedAccounts } = require("hardhat");
 const { parseUnits, formatUnits } = require("ethers").utils;
-const { getTokenAddresses } = require('../utils/helpers');
+const { getTokenAddresses, isFork } = require('../utils/helpers');
 const {
     deployWithConfirmation,
     withConfirmation,
@@ -29,5 +29,5 @@ const main = async ()=>{
 }
 
 main.id = "001_core";
-main.skip = () => false;
+main.skip = () => isFork;
 module.exports = main;

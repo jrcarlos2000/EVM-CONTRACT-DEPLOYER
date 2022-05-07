@@ -9,11 +9,15 @@ require("hardhat-contract-sizer");
 require("hardhat-deploy-ethers");
 require("@openzeppelin/hardhat-upgrades");
 
+const { fund } = require("./tasks/fund");
+const { task } = require("hardhat/config");
+
 const mnemonic =
   "replace hover unaware super where filter stone fine garlic address matrix basic";
 
 let privateKeys = [];
 
+//creates the list of private keys from the mnemonic
 let derivePath = "m/44'/60'/0'/0/";
 for (let i = 0; i <= 10; i++) {
   const wallet = new ethers.Wallet.fromMnemonic(mnemonic, `${derivePath}${i}`);
@@ -27,6 +31,13 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
     console.log(account.address);
   }
 });
+
+task("fund", "Fund accounts on fork")
+  .addOptionalParam("amount", "Stable coin amount to fund each account with")
+  .addOptionalParam("fundnetwork", "forked Network")
+  .addOptionalParam("localaccounts"," number of first local accounts to fund")
+  .setAction(fund);
+
 
 module.exports = {
   solidity: {
@@ -46,12 +57,14 @@ module.exports = {
       initialBaseFeePerGas: 0,
     },
     localhost: {
+      url: "http://127.0.0.1:8545/",
+      chainId: 1337,
       timeout: 60000,
     },
     mainnet : {
       url : `${process.env.MAINNET_PROVIDER_URL}`,
       accounts: [
-        process.env.DEPLOYER_PRIVATE_KEY || privateKeys[1],
+        process.env.DEPLOYER_PRIVATE_KEY || privateKeys[2],
         process.env.GOVERNOR_PRIVATE_KEY || privateKeys[1],
       ],
       chainId: 1,
@@ -59,7 +72,7 @@ module.exports = {
     skale : {
       url : `${process.env.SKALE_PROVIDER_URL}`,
       accounts: [
-        process.env.DEPLOYER_PRIVATE_KEY || privateKeys[1],
+        process.env.DEPLOYER_PRIVATE_KEY || privateKeys[2],
         process.env.GOVERNOR_PRIVATE_KEY || privateKeys[1],
       ],
       chainId: 0xafcee83030b95,
@@ -67,7 +80,7 @@ module.exports = {
     polygonMumbai: {
       url: `${process.env.MUMBAI_PROVIDER_URL}`,
       accounts: [
-        process.env.DEPLOYER_PRIVATE_KEY || privateKeys[1],
+        process.env.DEPLOYER_PRIVATE_KEY || privateKeys[2],
         process.env.GOVERNOR_PRIVATE_KEY || privateKeys[1],
       ],
       chainId: 80001,
@@ -75,7 +88,7 @@ module.exports = {
     polygon: {
       url: `${process.env.POLYGON_PROVIDER_URL}`,
       accounts: [
-        process.env.DEPLOYER_PRIVATE_KEY || privateKeys[1],
+        process.env.DEPLOYER_PRIVATE_KEY || privateKeys[2],
         process.env.GOVERNOR_PRIVATE_KEY || privateKeys[1],
       ],
       chainId: 137,
@@ -83,7 +96,7 @@ module.exports = {
     bscTestnet: {
       url: `${process.env.BSCTEST_PROVIDER_URL}`,
       accounts: [
-        process.env.DEPLOYER_PRIVATE_KEY || privateKeys[1],
+        process.env.DEPLOYER_PRIVATE_KEY || privateKeys[2],
         process.env.GOVERNOR_PRIVATE_KEY || privateKeys[1],
       ],
       chainId: 97,
@@ -91,7 +104,7 @@ module.exports = {
     bsc: {
       url: `${process.env.BSC_PROVIDER_URL}`,
       accounts: [
-        process.env.DEPLOYER_PRIVATE_KEY || privateKeys[1],
+        process.env.DEPLOYER_PRIVATE_KEY || privateKeys[2],
         process.env.GOVERNOR_PRIVATE_KEY || privateKeys[1],
       ],
       chainId: 56,

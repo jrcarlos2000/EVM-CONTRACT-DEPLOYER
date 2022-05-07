@@ -8,7 +8,11 @@
     "clean": "npx hardhat clean",
     "compile": "npx hardhat compile",
     "accounts": " npx hardhat accounts",
-    "verify": "npx hardhat verify"
+    "verify": "npx hardhat verify",
+    "node:polygon" : "./node.sh polygon",
+    "node:mainnet" : "./node.sh mainnet",
+    "deploy:polygon" : "NETWORK=polygon npx hardhat deploy --network localhost",
+    "deploy:mainnet" : "NETWORK=polygon npx hardhat deploy --network localhost"
   },
 
   "devDependencies": {

@@ -1,0 +1,35 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/UserRegistry.sol": {
+      "content": "pragma solidity ^0.8.0;\n//version C\ncontract UserRegistry {\n    uint256 public userCount;\n    address immutable owner;\n    struct User {\n        string url;\n        string name;\n        uint256 involvementBasis;\n        uint256 imgType;\n    }\n    \n    mapping(address => User) userByAddress;\n    modifier onlyOwner () {\n        require(msg.sender == owner , \"caller is not owner\");\n        _;\n    }\n    constructor () {\n        owner = msg.sender;\n\n    }\n    function getUserByAddress() external view returns (User memory myUser){\n        myUser = userByAddress[msg.sender];\n    }\n    function modifyUser(string memory _url, string memory _name, uint256 _imgType) external {\n        User storage newUser = userByAddress[msg.sender];\n        newUser.url  = _url;\n        newUser.name = _name;\n        newUser.imgType = _imgType;\n    }\n\n    function getRandom() public view returns (bytes32 addr) {\n        assembly {\n            let freemem := mload(0x40)\n            let start_addr := add(freemem, 0)\n            if iszero(staticcall(gas(), 0x18, 0, 0, start_addr, 32)) {\n              invalid()\n            }\n            addr := mload(freemem)\n        }\n    }\n}"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}

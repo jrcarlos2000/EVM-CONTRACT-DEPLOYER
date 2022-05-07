@@ -1,5 +1,5 @@
 pragma solidity ^0.8.0;
-//version 8
+//version C
 contract UserRegistry {
     uint256 public userCount;
     address immutable owner;

@@ -23,13 +23,12 @@ mainnet : {
       chainId: 1,
 },
 ```
--   Write your Scan API KEY 
+-   Add your Scan API KEY for the verification
+-   the naming is important so you may check how to name your etherscan networks here https://hardhat.org/plugins/nomiclabs-hardhat-etherscan.html
 ```javascript
 etherscan: {
     apiKey: {
       polygonMumbai: process.env.POLYGONSCAN_API_KEY,
-      bscTestnet: process.env.BSCSCAN_API_KEY,
-      polygon : process.env.POLYGONSCAN_API_KEY,
     },
   },
 ```
@@ -72,6 +71,18 @@ await withConfirmation(
 yarn deploy --network {network name as in config.js}
 ```
 ## verify
+-   inside `hardhat.config.js` some networks have been added to the `etherscan` field ,  you may add other networks and your corresponding `API_KEY` to the `.env`
+```javascript
+  etherscan: {
+    apiKey: {
+      polygonMumbai: process.env.POLYGONSCAN_API_KEY,
+    },
+  },
+```
+-   the naming is important so you may check how to name your etherscan networks here https://hardhat.org/plugins/nomiclabs-hardhat-etherscan.html
+### How to ? 
 ```
 yarn verify --network {network name as in config.js} {contract address}
 ```
+
+https://hardhat.org/plugins/nomiclabs-hardhat-etherscan.html
