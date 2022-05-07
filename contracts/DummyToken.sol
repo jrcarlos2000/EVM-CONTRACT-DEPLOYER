@@ -5,6 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "./interfaces/AggregatorV3Interface.sol";
 
 contract DummyToken is ERC20 {
+    
     address public priceFeed;
     address immutable owner;
 
@@ -15,10 +16,9 @@ contract DummyToken is ERC20 {
 
     constructor(
         string memory name,
-        string memory symbol,
-        address creator
+        string memory symbol
     ) ERC20(name, symbol) {
-        _mint(creator, 1000 * 10e18);
+        _mint(msg.sender, 1000 * 10e18);
         owner = msg.sender;
     }
 

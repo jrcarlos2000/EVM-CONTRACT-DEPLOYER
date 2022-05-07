@@ -1,9 +1,9 @@
 const hre = require("hardhat");
-const { isMainnet, isTestnet } = require("../utils/helpers");
+const { isMainnet, isTestnet,isLocalHost, isFork } = require("../utils/helpers");
 
 const { getTxOpts } = require("../utils/tx");
 
-const NUM_CONFIRMATIONS = isMainnet || isTestnet ? 3 : 0;
+const NUM_CONFIRMATIONS = isFork || isLocalHost ? 0 : 3;
 
 function log(msg, deployResult = null) {
   if (process.env.VERBOSE) {

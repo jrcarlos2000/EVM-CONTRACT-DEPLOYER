@@ -11,7 +11,8 @@ const {
 
 const deployMockChainlinkPriceFeed = async () => {
 
-    await deployWithConfirmation('MockChainlinkOracleFeed',[100000000,8]);
+    await deployWithConfirmation('MockChainlinkOracleFeed',[parseUnits("1", 8).toString(), 18]);
+
 }
 
 const main = async ()=>{
@@ -19,5 +20,5 @@ const main = async ()=>{
 }
 
 main.id = "001_core";
-main.skip = () => !isLocalHost;
+main.skip = () => !(isLocalHost || isFork);
 module.exports = main;

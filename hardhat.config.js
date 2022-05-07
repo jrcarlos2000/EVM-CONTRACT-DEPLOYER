@@ -59,7 +59,7 @@ module.exports = {
     localhost: {
       url: "http://127.0.0.1:8545/",
       chainId: 1337,
-      timeout: 60000,
+      timeout: 6000000,
     },
     mainnet : {
       url : `${process.env.MAINNET_PROVIDER_URL}`,

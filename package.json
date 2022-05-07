@@ -12,7 +12,7 @@
     "node:polygon" : "./node.sh polygon",
     "node:mainnet" : "./node.sh mainnet",
     "deploy:polygon" : "NETWORK=polygon npx hardhat deploy --network localhost",
-    "deploy:mainnet" : "NETWORK=polygon npx hardhat deploy --network localhost"
+    "deploy:mainnet" : "NETWORK=mainnet npx hardhat deploy --network localhost"
   },
 
   "devDependencies": {
