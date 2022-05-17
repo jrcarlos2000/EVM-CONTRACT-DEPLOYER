@@ -3,8 +3,9 @@ if read carefully this is very easy to use and extremely useful can save tons of
 
 ## FEEL FREE TO BRANCH AND ADD SOME GOOD EXAMPLES 
 ## CONTRIBUTIONS TO IMPROVE THIS REPO ARE HIGHLY APPRECIATED
+<br>
 
-### `SETTING UP`
+# `SETTING UP`
 
 - clone this repo
 ```
@@ -33,7 +34,7 @@ etherscan: {
   },
 ```
 
-### `PLAYING AROUND`
+# `PLAYING AROUND`
 
 -   `deploy.js` and `tx.js` include deployer functions
 -   To deploy use the following function :
@@ -64,8 +65,23 @@ await withConfirmation(
     cUserRegistry.modifyUser('hola', 'emerson',1)
 )
 ```
+<br>
 
-### `CLI`
+# `FORKING THE MAINNET`
+It's possible to Fork the current status of the mainnet into a local node and run tests on it, this is very useful for projects that need to interact with existing contracts, also useful for testing deployed contracts after a vulnerability has been found. 
+## Requirements 
+- Archive node provider, preferably Alchemy ( add them to your `.env`)
+- Currently Supporting Mainnet, Polygon and BSC, feel free to add more :)
+
+## Tasks
+### Fund
+Allows you to fund accounts that you added to your `.env` , using the tokens that are declared there as well.
+There is a SANITY CHECK :
+1) check all the tokens that you need are declared in `addresses.js`
+2) make sure there is a funder for each token in `addresses.js`
+3) make sure the decimals of the token are addded to `constants.js`
+4) if the call fails, check if the funders have enough funds and GAS (i.e. ETH).
+# `CLI`
 ## deploy
 ```
 yarn deploy --network {network name as in config.js}
@@ -74,3 +90,19 @@ yarn deploy --network {network name as in config.js}
 ```
 yarn verify --network {network name as in config.js} {contract address}
 ```
+## Node
+```
+yarn node:{network}
+```
+## Deploy on Node
+```
+yarn deploy:{network}
+```
+## Fund on Node
+```
+yarn fund:{network} --amount {AMOUNT} --localaccounts {number of local accounts to fund}
+```
+<br>
+
+# `SAMPLE PROJECTS` Still in progress
+## Project Repo
