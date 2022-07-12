@@ -4,8 +4,9 @@ const {addresses} = require("../utils/addresses");
 const forkedNetwork = process.env.NETWORK;
 const isPolygon = hre.network.name === "polygon" || forkedNetwork == "polygon";
 const isMainnet = hre.network.name === "mainnet" || forkedNetwork == "mainnet";
-const isLocalHost = hre.network.name === "localhost";
-const isFork = hre.network.name == "hardhat";
+const isLocalHost = hre.network.name === "hardhat";
+console.log(hre.network.name);
+const isFork = hre.network.name == "localhost";
 
 const getTokenAddresses = async (deployments) => {
   if (isPolygon) {
