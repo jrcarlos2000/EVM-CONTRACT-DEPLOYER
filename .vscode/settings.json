@@ -1,0 +1,11 @@
+{
+    "editor.defaultFormatter": null,
+    "[javascript]": {
+      "formatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true
+    },
+    "[solidity]": {
+      "formatter": "forge",
+      "editor.formatOnSave": true
+    }
+  }

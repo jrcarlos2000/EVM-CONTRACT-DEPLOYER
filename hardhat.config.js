@@ -18,6 +18,7 @@ const mnemonic =
 let privateKeys = [];
 
 //creates the list of private keys from the mnemonic
+
 let derivePath = "m/44'/60'/0'/0/";
 for (let i = 0; i <= 10; i++) {
   const wallet = new ethers.Wallet.fromMnemonic(mnemonic, `${derivePath}${i}`);
@@ -35,9 +36,8 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 task("fund", "Fund accounts on fork")
   .addOptionalParam("amount", "Stable coin amount to fund each account with")
   .addOptionalParam("fundnetwork", "forked Network")
-  .addOptionalParam("localaccounts"," number of first local accounts to fund")
+  .addOptionalParam("localaccounts", " number of first local accounts to fund")
   .setAction(fund);
-
 
 module.exports = {
   solidity: {
@@ -50,27 +50,24 @@ module.exports = {
   },
   networks: {
     hardhat: {
-      accounts: {
-        mnemonic,
-      },
       chainId: 1337,
       initialBaseFeePerGas: 0,
     },
     localhost: {
-      url: "http://127.0.0.1:8545/",
-      chainId: 1337,
+      url: "http://0.0.0.0:9545/",
+      chainId: 12345,
       timeout: 6000000,
     },
-    mainnet : {
-      url : `${process.env.MAINNET_PROVIDER_URL}`,
+    mainnet: {
+      url: `${process.env.MAINNET_PROVIDER_URL}`,
       accounts: [
         process.env.DEPLOYER_PRIVATE_KEY || privateKeys[2],
         process.env.GOVERNOR_PRIVATE_KEY || privateKeys[1],
       ],
       chainId: 1,
     },
-    skale : {
-      url : `${process.env.SKALE_PROVIDER_URL}`,
+    skale: {
+      url: `${process.env.SKALE_PROVIDER_URL}`,
       accounts: [
         process.env.DEPLOYER_PRIVATE_KEY || privateKeys[2],
         process.env.GOVERNOR_PRIVATE_KEY || privateKeys[1],
@@ -108,16 +105,16 @@ module.exports = {
         process.env.GOVERNOR_PRIVATE_KEY || privateKeys[1],
       ],
       chainId: 56,
-    }
+    },
   },
   namedAccounts: {
     deployerAddr: {
       default: 0,
-      localhost: 0
+      localhost: 0,
     },
     governorAddr: {
       default: 1,
-      localhost: 1
+      localhost: 1,
     },
   },
   gasReporter: {
@@ -132,7 +129,7 @@ module.exports = {
     apiKey: {
       polygonMumbai: process.env.POLYGONSCAN_API_KEY,
       bscTestnet: process.env.BSCSCAN_API_KEY,
-      polygon : process.env.POLYGONSCAN_API_KEY,
+      polygon: process.env.POLYGONSCAN_API_KEY,
     },
   },
 };
